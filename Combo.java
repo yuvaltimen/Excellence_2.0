@@ -39,8 +39,18 @@ public class Combo extends AbstractShape {
    */
 
   @Override
-  public void transition() {
+  public void transition(int tick) {
     //TODO: fill in method body
+  }
+
+  /**
+   *
+   * @param scl
+   */
+
+  @Override
+  protected void scale(Dimension2D scl) {
+
   }
 
   /**

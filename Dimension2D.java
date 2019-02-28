@@ -1,5 +1,7 @@
 package shapes;
 
+import java.util.Objects;
+
 /**
  * Represents a 2-dimensional position on a Cartesian grid.
  */
@@ -22,6 +24,28 @@ public class Dimension2D {
   public Dimension2D(Dimension2D posn) {
     this.x = posn.getX();
     this.y = posn.getY();
+  }
+
+  /**
+   * Overriding the equals method and hashcode method
+   */
+
+  @Override
+  public boolean equals(Object o) {
+    boolean equals = true;
+    if (o instanceof Dimension2D) {
+      Dimension2D given = (Dimension2D) o;
+
+      equals &= ((given.getX() == this.getX())
+              && (given.getY() == this.getY()));
+
+    }
+    return equals;
+  }
+
+  public int hashcode() {
+
+    return Objects.hash(this.getX(), this.getY());
   }
 
   /**

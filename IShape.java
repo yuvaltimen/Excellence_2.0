@@ -9,7 +9,7 @@ public interface IShape {
    * Reads the list of instructions and changes the shape as described.
    */
 
-  void transition();
+  void transition(int tick);
 
 
   /**

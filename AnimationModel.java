@@ -1,5 +1,4 @@
 import shapes.IShape;
-import shapes.Morph;
 
 import java.util.List;
 
@@ -9,6 +8,7 @@ import java.util.List;
 public class AnimationModel implements Animatable {
 
   private List<IShape> shapes;
+  private int tick;
 
   /**
    * Default constructor.
@@ -16,6 +16,7 @@ public class AnimationModel implements Animatable {
 
   public AnimationModel(List<IShape> shapes) {
     this.shapes = shapes;
+    this.tick = 0;
   }
 
 
@@ -26,6 +27,29 @@ public class AnimationModel implements Animatable {
   @Override
   public void drawAnimation() {
     //TODO: fill in method body
+  }
+
+  /**
+   * Runs the model of the animation for some number of ticks.
+   */
+
+  public void runAnimation(int finTick) {
+    while (this.tick < finTick) {
+      this.changeFrame();
+      this.tick++;
+    }
+  }
+
+  /**
+   * Updates the list of shapes for the current tick
+   */
+
+  public void changeFrame() {
+
+    //changes the shapes for the current frame
+    for (IShape s : this.shapes) {
+      s.transition(this.tick);
+    }
   }
 
 
@@ -52,17 +76,5 @@ public class AnimationModel implements Animatable {
     }
     return sb.toString();
 
-    /*
-    For this method I'm thinking the following:
-
-    for (IShape s : shapes) {
-    print("shape" + shapeVariableName + shapeType + \n)
-    for (Morph m : s.instructions) {
-    println("motion" + shapeVariableName + m.printInitConds() + " " + m.printFinalConds())
-    }
-    println(\n)
-    }
-
-     */
   }
 }

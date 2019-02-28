@@ -10,7 +10,7 @@ import java.awt.Color;
  */
 public abstract class AbstractPrimitiveShape extends AbstractShape {
 
-  Dimension2D dimension;
+  protected Dimension2D dimension;
 
 
   /**
@@ -26,10 +26,14 @@ public abstract class AbstractPrimitiveShape extends AbstractShape {
     this.dimension = dimension;
   }
 
-
+  /**
+   * Scales the current shape based on the scale factor.
+   */
 
   @Override
-  public void transition() {
-    //TODO: fill in method body
+  protected void scale(Dimension2D scl) {
+    Dimension2D newDim = this.dimension.mult(scl);
+    this.dimension = newDim;
   }
+
 }

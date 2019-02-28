@@ -4,7 +4,7 @@ package shapes;
  * Represents the abstract class for a shapes.Morph. Contains the common information
  * between all extending classes.
  */
-public class Morph {
+public class Morph implements Comparable<Morph> {
 
   private int startTick;
   private Dimension2D initPosn;
@@ -23,6 +23,10 @@ public class Morph {
 
   public Morph(int sT, Dimension2D sP, Dimension2D sD, int sR, int sG, int sB, int eT, Dimension2D eP,
                Dimension2D eD, int eR, int eG, int eB) {
+
+    if (eT <= sT || eT < 0 || sT < 0) {
+      throw new IllegalArgumentException("This is ticking me off...");
+    }
 
     this.startTick = sT;
     this.initPosn = sP;
@@ -144,4 +148,13 @@ public class Morph {
     return toAddPerTick;
   }
 
+  /**
+   * Comparison method for this morph.
+   * @param m The other morph being compared.
+   * @return The difference between the startTicks.
+   */
+  @Override
+  public int compareTo(Morph m) {
+    return this.getStartTick() - m.getStartTick();
+  }
 }
